@@ -22,6 +22,12 @@ public class UnnamedBot implements IBot{
 
     @Override
     public IMove doMove(IGameState state) {
+
+        List<IMove> winMoves = getWinningMoves(state);
+        if(!winMoves.isEmpty())
+            return winMoves.get(0);
+
+
         //Find macroboard to play in
         for (int[] move : preferredMoves)
         {
