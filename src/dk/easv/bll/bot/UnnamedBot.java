@@ -1,22 +1,47 @@
 package dk.easv.bll.bot;
 
+import dk.easv.bll.field.IField;
 import dk.easv.bll.game.IGameState;
 import dk.easv.bll.move.IMove;
+import dk.easv.bll.move.Move;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
-public class UnnamedBot extends LocalPrioritisedListBot{
+
+public class UnnamedBot implements IBot{
     private static final String BOTNAME = "Unnamed Bot";
+
+    // Moves {row, col} in order of preferences. {0, 0} at top-left corner
+    protected int[][] preferredMoves = {
+            {1, 1}, //Center
+            {0, 0}, {2, 2}, {0, 2}, {2, 0},  //Corners ordered across
+            {0, 1}, {2, 1}, {1, 0}, {1, 2}}; //Outer Middles ordered across
+
+
     @Override
     public IMove doMove(IGameState state) {
-        List<IMove> winMoves = getWinningMoves(state);
-        if(!winMoves.isEmpty())
-            return winMoves.get(0);
+        //Find macroboard to play in
+        for (int[] move : preferredMoves)
+        {
+            if(state.getField().getMacroboard()[move[0]][move[1]].equals(IField.AVAILABLE_FIELD))
+            {
+                //find move to play
+                for (int[] selectedMove : preferredMoves)
+                {
+                    int x = move[0]*3 + selectedMove[0];
+                    int y = move[1]*3 + selectedMove[1];
+                    if(state.getField().getBoard()[x][y].equals(IField.EMPTY_FIELD))
+                    {
+                        return new Move(x,y);
+                    }
+                }
+            }
+        }
 
-        return super.doMove(state);
+        //NOTE: Something failed, just take the first available move I guess!
+        return state.getField().getAvailableMoves().get(0);
     }
 
 
