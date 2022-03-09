@@ -61,14 +61,16 @@ public class HarryBotter implements IBot{
         for (int i = startY; i < startY + 3; i++) {
             if (!board[move.getX()][i].equals(player))
                 break;
-            if (i == startY + 3 - 1) return true;
+            if (i == startY + 3 - 1)
+                return true;
         }
 
         //check row
         for (int i = startX; i < startX + 3; i++) {
             if (!board[i][move.getY()].equals(player))
                 break;
-            if (i == startX + 3 - 1) return true;
+            if (i == startX + 3 - 1)
+                return true;
         }
 
         //check diagonal
@@ -78,7 +80,8 @@ public class HarryBotter implements IBot{
             for (int i = startX; i < startX + 3; i++) {
                 if (!board[i][y++].equals(player))
                     break;
-                if (i == startX + 3 - 1) return true;
+                if (i == startX + 3 - 1)
+                    return true;
             }
         }
 
@@ -88,7 +91,8 @@ public class HarryBotter implements IBot{
             for (int i = startX; i < startX + 3; i++) {
                 if (!board[i][(startY + 2)-less++].equals(player))
                     break;
-                if (i == startX + 3 - 1) return true;
+                if (i == startX + 3 - 1)
+                    return true;
             }
         }
         return false;
@@ -110,14 +114,16 @@ public class HarryBotter implements IBot{
         for (int i = startY; i < startY + 3; i++) {
             if (!board[move.getX()][i].equals(player))
                 break;
-            if (i == startY + 3 - 1) return true;
+            if (i == startY + 3 - 1)
+                return true;
         }
 
         //check row
         for (int i = startX; i < startX + 3; i++) {
             if (!board[i][move.getY()].equals(player))
                 break;
-            if (i == startX + 3 - 1) return true;
+            if (i == startX + 3 - 1)
+                return true;
         }
 
         //check diagonal
@@ -127,7 +133,8 @@ public class HarryBotter implements IBot{
             for (int i = startX; i < startX + 3; i++) {
                 if (!board[i][y++].equals(player))
                     break;
-                if (i == startX + 3 - 1) return true;
+                if (i == startX + 3 - 1)
+                    return true;
             }
         }
 
@@ -137,7 +144,8 @@ public class HarryBotter implements IBot{
             for (int i = startX; i < startX + 3; i++) {
                 if (!board[i][(startY + 2)-less++].equals(player))
                     break;
-                if (i == startX + 3 - 1) return true;
+                if (i == startX + 3 - 1)
+                    return true;
             }
         }
         return false;
