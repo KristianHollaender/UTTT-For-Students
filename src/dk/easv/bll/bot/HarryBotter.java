@@ -34,6 +34,12 @@ public class HarryBotter implements IBot{
      */
     @Override
     public IMove doMove(IGameState state) {
+
+        List<IMove> centerMove = state.getField().getAvailableMoves();
+        if (centerMove.size() == 81){
+            return centerMove.get(40);
+        }
+
         List<IMove> winMoves = getWinningMoves(state);
         if(!winMoves.isEmpty())
             return winMoves.get(0);
