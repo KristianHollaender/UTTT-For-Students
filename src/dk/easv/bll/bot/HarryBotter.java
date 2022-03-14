@@ -29,8 +29,8 @@ public class HarryBotter implements IBot{
      * This method first check if there are any winning moves, if there are then the bot wins.
      * Then checks if it can block the opponent from winning.
      * Else it returns a random move
-     * @param
-     * @return
+     * @param state
+     * @return randomMove()
      */
     @Override
     public IMove doMove(IGameState state) {
